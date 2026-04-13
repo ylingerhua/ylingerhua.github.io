@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/pisces.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="jumbotron text-center">
+			<h2>Semantic Nerf in unbounded scene for autonomous driving scene</h2>
+		</div>
+		<div class="container">
+			<a href="https://ylingerhua.github.io/#working-experience" class="btn btn-outline-secondary" role="button">&#171; Back</a>
+			<br><br>
+			<p>
+				This project is my main work in nullmax. This is inspired by the work of auto-labeling shared in the Tesla AI Day. 
+				Large-scale datasets with high quality annotation are important for image segemantation for autonomous driving scene. 
+				Besides the need of muti-view 2d semantic label, bird’s eye view annotation has higher value with the popularity of BEV based algorithm in both object detection and image segmentation. 
+				Nerf has showed satisfactory result in NVS task, so I am trying to apply nerf to autonomous driving scene to get muti-view images and the semantic labels.
+				Synthesizing novel view image and semantic label is nontrivial and the original nerf cannot handle the task. 
+				There are two difficulties in this project:
+				<li>
+					The autonomous driving scene is unbounded in 360 degree. 
+					Current works have two ways to handle this issue. 
+					One is used in forward facing scene with NDC. 
+					The other is proposed by nerfplusplus in 360 degree unbounded scene, which is suitable for auto-driving scene. 
+					But nerfplusplus just synthesis rgb images and do not extend this work to semantic annotation.
+				</li>
+				<li>
+					The ambigious problem, the inherent ambiguity of reconstructing 3D content from 2D images, is obvious in this scene setting, 
+					because of sparse sample range. Nuscenes and Kitti-360 datasets are commonly used data for 2D image segmentation in auto driving scene. 
+					The average distance between two adjacent images is 5m for Nuscenes and 2m for kitti360, 
+					which is far more large compared with the data used in nerf related papers.
+				</li>
+				<br>
+				Currently I constructed a semantic nerf for unbounded scene as follows:
+				<br>
+				<li>
+					I used kitti-360 dataset and select one static scene which covers 50m driving distance. 
+					The dataset contains rgb images, camera poses and semantic lables as sample pairs.
+				</li>
+				<li>
+					This work is based on nerfplusplus, which aimed for 360 degree unbounded scene. 
+					The foreground range is surrounded by the camera poses of the selected scene. 
+					Meantime, I added the semantic head and the semantic render loss besides the rgb loss.
+				</li>
+				<br>
+				According to the leaderboard of NVS task in kitti360 dataset, this net achieved PSNR 26.323, SSIM 0.901 and mIOU 0.759 
+				compared with the top performance in the laderboard, which achieved PSNR 21.91, SSIM 0.816 and mIOU 0.743.
+				The following video shows the NVS and semantic result in test data. 
+				The first row is the output of rgb images, the second row is the semantic label and the last is semantic output.
+			</p>	
+			<p align=center>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/FYloWEzIxdg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</p>
+			<p>
+				Additionally, I have tried to get the full depth map. 
+				As both foreground and background scene are re-parameterized to a unit sphere, I recovered full depth map separately for each region. 
+				The first is the output of rgb images, the second row is the real depth map which I get from the 3D point cloud of the scene and the last is the depth map render by the net.
+			</p>
+			<p align=center>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/yRC4s0FaC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</p>
+			<p>
+				I also generated a novel view path which had obviously different view as traing data and the visualized result is showed as following video.
+			<p align=center>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/8wy8mbUYhM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</p>
+			<p>
+				To improve the current performance, I also add the pose optimizing strategy, which was done in Barf, in nerfplusplus.
+				And I found that the key point to improve performance and even get satisfactory result in bird eye view just using forward facing poses is getting precise geometry. 
+				So I also followed the regularization method proposed in Info-nerf. Additionally, I designed depth-aware nerfplusplus through adding depth supervision.
+				As for auto-driving scene, 3D point cloud data is always available and 
+				there is no work which use this information to further improve the quality of reconstructed geometry in autonomous driving scene. 
+				I achieved depth supervision through projecting each 3D point to image plane using intrinsic and extrinsic camera matrix and apply depth loss for optimization.
+			
+				<br><br>
+				Furthermore, some problems have to solve in this scene:
+				<li>
+					Although the currrent work has achieved satisfactory in test data, the results for obviously different view from train data do not meet the requirements.
+				</li>
+				<li>
+					Construction of lager scale scenes. Block-nerf has achieved this task, but it requires densely sampled data and many nerfs to construct each small scale scene.
+				</li>
+				<li>
+					Dynamic scene synthesis. It is common the scene has transient objects, such as cars and people.
+				</li>
+				<li>
+					For auto driving scene, data from all kind of weather conditions is needed, such as foggy, raining and cloudy conditions. 
+				</li>
+				<li>
+					The rendering time. The ultimate aim is to achieve real time rendering.
+				</li>
+			</p>
+			<br><br><br><br><br><br>
+		</div>
+	</body>
+</html>

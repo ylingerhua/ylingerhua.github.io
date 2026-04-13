@@ -1,0 +1,234 @@
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/pisces.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<style>
+			img {
+				max-width: 60%;
+				max-height: 60%;
+				height: auto;
+				width: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="jumbotron text-center">
+			<h2>Talking Pose Generation</h2>
+		</div>
+		<div class="container">
+			<a href="https://ylingerhua.github.io/#working-experience" class="btn btn-outline-secondary" role="button">&#171; Back</a>
+			<br><br>
+			<p>
+				This project is my main work in Skyworld. Our team aims to achieve the automatic pipeline of AI short series. I was responsible for the actor performance section,
+				mainly on generating audio-driven human pose, including body movement and hand gesture, which is an important for coherent actor performance. I tried two ways to
+				achieve this word, motion retrival and end2end motion genetation.
+
+				The autimate goals are:
+				Implement text, speech, and music-conditioned pose generation.
+				<li>
+					The rhythm of body movement can be controlled by speech and background music.
+				</li>
+				<li>
+					The transcript of the speech controls the generation of semantic poses.
+				</li>
+				<li>
+					Text can adjust the character's pose based on semantic information, which includes pose content and emotion.
+				</li>
+				<li>
+					Long-term pose generation continuity.
+				</li>
+				<li>
+					Generation efficiency.
+				</li>
+				<h3>
+					text to 3d
+				</h3>
+				<h4>
+					papers:
+				</h4>
+				<li style="padding-left: 40px;"> 
+					<a href="https://dreamfusion3d.github.io/" target="_blank"> Dreamfusion: Text-to-3D using 2D Diffusion</a>
+					<h6>Motivation</h6>
+					<ol>
+						<li>
+							<p>Diffusion models exhibit excellent performance (high fidelity, diversity, and controllability) in
+								text-to-image generation tasks. However, using diffusion models for 3D generation tasks is challenging,
+								requiring a large amount of annotated 3D data and effective denoising of 3D models.</p>
+						</li>
+						<li>
+							<p>GANs can achieve controllable 3D generation models, performing well in face model generation, but they do not
+								support 3D model generation guided by arbitrary text.</p>
+						</li>
+						<li>
+							<p>Dreamfield utilizes the embeddings of images and text from CLIP model to further train Nerf. This work
+								demonstrates that pre-trained text-image models can be used to guide the generation of 3D models. However,
+								the generation results of Dreamfield lack realism and accuracy.</p>
+						</li>
+					</ol>
+					<h6>Method</h6>
+					<ol>
+						<li>
+							<p>Similar to Dreamfield, utilize a high-performing text-image model to guide 3D generation. However, instead
+								of using the CLIP model, introduce a diffusion model to construct the loss function for optimizing the
+								training of Nerf.</p>
+						</li>
+						<li>
+							<p>Propose Score Distillation Sampling, which combines the diffusion model with Nerf. The loss function is
+								based on probability density distillation, minimizing the Kullback–Leibler divergence between the Gaussian
+								distribution based on the forward diffusion process and the score function of the pre-trained diffusion
+								model.</p>
+						</li>
+					</ol>
+					<p align=center>
+						<img src="../images/dreamfusion.png" alt="Your Image">
+					</p>
+					<h6>Problems</h6>
+					<ol>
+						<li>
+							<p>Model seeking nature with poor diversity, over-smoothing, and over-saturation. Different seeds result in
+								nearly identical 3D models.</p>
+						</li>
+						<li>
+							<p>Experiments reveal a tendency towards three-dimensional axis-symmetric models. This is likely due to the
+								prevalence of standard object viewpoints in text-to-image pre-trained models, causing Nerf to generate
+								standard viewpoints for each angle. A typical case observed in experiments is the generation of a food fork.
+							</p>
+						</li>
+					</ol>
+					
+					
+				</li>
+				<li style="padding-left: 40px;">
+					<a href="https://research.nvidia.com/labs/dir/magic3d/" target="_blank"> Magic3D: High-Resolution Text-to-3D Content Creation</a>
+					<h6>Motivation</h6>
+					<ol>
+						<li>
+							<p>Dreamfusion has long training times. The base model of Dreamfusion adopts mipnerf360, and the fully MLP
+								structure design of Nerf leads to long training times.</p>
+						</li>
+						<li>
+							<p>Dreamfusion produces low-quality results. The use of lower-resolution diffusion models to optimize Nerf
+								results in lower reconstruction quality.</p>
+						</li>
+					</ol>
+					<h6>Contribution</h6>
+					<p>Employ two different 3D models and two different diffusion models to guide 3D scene generation. Design a
+						Coarse-to-fine model, where the Coarse stage is similar to Dreamfusion, using a diffusion model to optimize Nerf.
+						Following the Coarse model, add a Fine model, which optimizes the model using an explicit mesh 3D structure.</p>
+					<p align=center>
+						<img src="../images/magic3d.png" alt="Your Image">
+					</p>
+				</li>
+				<li style="padding-left: 40px;">
+					<a href="https://ml.cs.tsinghua.edu.cn/prolificdreamer/" target="_blank"> ProlificDreamer: High-Fidelity and Diverse 
+						Text-to-3D Generation with Variational Score Distillation</a>
+					<h6>Motivation</h6>
+					<p>No need for any 3D data. SDS has made significant progress in the text-to-3D task, but the generated 3D models are
+						overly smooth, lack detail, and have poor diversity.</p>
+					
+					<h6>Contribution</h6>
+					<ol>
+						<li>
+							<p>Introduced Variational Score Distillation, which models the corresponding 3D scene for a given text prompt as
+								a distribution, rather than a point (as in SDS).</p>
+						</li>
+						<li>
+							<p>For modeling the distribution of 3D scenes, particles are used to represent 3D models, and a gradient update
+								method based on Wasserstein gradient flow is proposed to optimize particle parameters.</p>
+						</li>
+						<li>
+							<p>Systematically analyzed factors related to the pre-training process: 512*512 high-resolution rendering,
+								annealing distillation time strategy, scene initialization.</p>
+						</li>
+						<li>
+							<p>Capable of achieving 360-degree modeling of scenes.</p>
+						</li>
+					</ol>
+					<p align=center>
+						<img src="../images/prolificdreamer.png" alt="Your Image">
+					</p>
+				</li>
+				
+				
+				<h4>
+					Problems in Experiments:
+				</h4>
+				<li>
+					Janus problem
+					There are two papers trying to solve this problem.
+					<p><a href="https://susunghong.github.io/Debiased-Score-Distillation-Sampling/" target="_blank">
+						Debiasing Scores and Prompts of 2D Diffusion for Robust Text-to-3D Generation</a></p>
+					<p></p><a href="https://perp-neg.github.io/" target="_blank"> 
+						Re-imagine the Negative Prompt Algorithm: Transform 2D Diffusion into 3D, alleviate Janus problem and Beyond</a></p>
+					
+				</li>
+				<li>
+					complex model, like tree which have many branches and structure.
+				</li>
+				<li>
+					consistant between text and the generated 3d model.
+				</li>
+				
+				<h3>
+					Image to 3d
+				</h3>
+				<h4>
+					papers:
+				</h4>
+				<li style="padding-left: 40px;">
+					<a href="https://zero123.cs.columbia.edu/" target="_blank">
+						Zero-1-to-3: Zero-shot One Image to 3D Object</a>
+				</li>
+				<li style="padding-left: 40px;">
+					<a href="https://make-it-3d.github.io/" target="_blank">
+						Make-It-3D: High-Fidelity 3D Creation from A Single Image with Diffusion Prior</a>
+				</li>
+				<li style="padding-left: 40px;">
+					<a href="https://objaverse.allenai.org/" target="_blank">
+						Objaverse-XL: A Colossal Universe of 3D Objects</a>
+				</li>
+				<h4>
+					Problems in Experiments:
+				</h4>
+				<li>
+					hallucinagine the unknow view, which have high quality and is consistant with the reference image, is way more difficult
+					than text-to-3d task. So, which is better? Text-to-3d? Image-to-3d?
+				</li>
+				<li>
+					blur in back view
+				</li>
+				<li>
+					inconsistant between cannon view and other side
+				</li>
+				
+				<h3>
+					Personal Thoughts
+				</h3>
+				<p>
+					In the gaming industry, the image-to-3D conversion method is preferred. This is because it allows the direct utilization
+					of artwork, typically 2D drawings depicting characters, scenes, or objects, as input for AI models. Presently, the
+					quality of 3D assets generated by AI falls significantly short of manual creation. However, it serves as a valuable tool
+					for swiftly visualizing the 3D version of the original 2D drawing, facilitating rapid adjustments to design details by
+					artists.
+
+				</p>
+				<p>
+					In the realm of 3D generation research, two primary directions emerge. One involves distilling knowledge from expansive
+					vision-language models, which presents two key challenges: the Janus problem and the speed of generating individual
+					models. The emphasis of this direction lies in algorithmic advancements. The other approach entails training models
+					based on 3D datasets, considered the optimal method in theory. However, the availability and quality of 3d datasets
+					are limited. With datasets volumes comparable to those in vision-language model work, the potential for
+					creating generalized and high-quality 3D large models will be possible.
+
+
+				</p>
+
+			</p>	
+			
+			<br><br><br><br><br><br>
+		</div>
+	</body>
+</html>

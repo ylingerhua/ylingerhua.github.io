@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<title>Projects</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/pisces.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<style>
+			img {
+				max-width: 60%;
+				max-height: 60%;
+				height: auto;
+				width: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="jumbotron text-center">
+			<h2>Motion Retrieval</h2>
+		</div>
+		<div class="container">
+			<a href="./End2end motion generation.html" class="btn btn-outline-secondary" role="button">&#171; Back</a>
+			<br><br>
+			<p>
+				<h3>
+					Build Motion Bank
+				</h3>
+
+				<p>Render repo: GCP A100: 34.148.117.93 /data/ling/bvh_to_smplx</p>
+				<p>Seg_dataset: https://github.com/LuMen-ze/Semantic-Gesticulator-Official/tree/main/SeG_dataset</p>
+
+				<h4>
+					Format
+				</h4>
+				<table>
+					<thead>
+						<tr>
+							<th class="narrow-col">Render</th>
+							<th class="wide-col">Metadata</th>
+							<th class="narrow-col">Smplx Motion File</th>
+							<th class="narrow-col">Audio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<video width="200" height="150" controls>
+									<source src="../images/A10-_Lie_to_crouch_stageii.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</td>
+							<td>
+								<pre>
+{
+	"Motivation": "&lt;Motivation&gt;",
+	"Context": {
+		"Location": "&lt;Location&gt;",
+		"Time": "&lt;Time&gt;",
+		"Scenario": "&lt;Scenario&gt;"
+	},
+	"Emotion": {
+		"Tag": "&lt;Emotion Word&gt;",
+		"Description": "&lt;Emotion Description&gt;"
+	},
+	"RequireMotion": "&lt;RequireMotion&gt;",
+	"Action Category": "&lt;Action Category&gt;",
+	"Action Subcategory": "&lt;Action Subcategory&gt;",
+	"Detailed Movements": {
+		"Head": "&lt;Head&gt;",
+		"Arms": "&lt;Arms&gt;",
+		"Legs": "&lt;Legs&gt;"
+	},
+	"Position": "&lt;Character Position&gt;",
+	"Intensity": "&lt;Intensity&gt;",
+	"Camera": "&lt;Suggested Camera Perspectives&gt;",
+	"Duration": "&lt;Duration&gt;",
+	"Motion File Path": "&lt;Motion File Path&gt;",
+	"Audio": {
+		"Has Audio": "&lt;HasAudio&gt;",
+		"Audio Path": "&lt;Audio Path&gt;",
+		"Transcript": "&lt;Transcript&gt;"
+	}
+}
+								</pre>
+							</td>
+							<td>
+								<a href="../images/A10-_Lie_to_crouch_stageii.npz" download>[ARMS_RAISE_TOWORDS_SKY.npz]</a>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+			<br><br>
+			
+			<h4>
+				Metedata:
+			</h4>
+			<p align=center>
+				<img src="../images/motion_bank.png" alt="Your Image">
+			</p>
+
+			
+			<p>1. Motivation: This field could explain why the character performs the action, providing insight into their intentions or goals. </p>
+			<p>2. Context: The specific context or type of scene where the motion is used, including details such as location (e.g., office, park, restaurant), 
+				time of day (e.g., morning, evening), and the overall scenario (e.g., tense confrontation, casual conversation)</p>
+			<p>3. Emotion: The specific emotional state or mood that the motion communicates, such as happiness, frustration, apprehension, or excitement. 
+			This can include a range of feelings that provide insight into the character's psychological state or emotional response within the scene. 
+			The answer should be one word &lt;Emotion Word&gt;; and a detailed description &lt;Emotion Description&gt;</p>
+			<p>4. RequireMotion: What is the character's current status? Based on the motion categories provided, should we assign a specific motion to this character, 
+			or is the character simply in an idle state with minimal movement? Please determine if the character is actively engaged in a particular type of motion or 
+			if they are passively remaining stationary with slight or no visible actions. The answer is yes or no</p>
+			<p>5. What is the &lt;Action Category&gt; of the person?
+			If RequireMotion is yes, then assign a &lt;Action Category&gt; to the motion. &lt;Action Category&gt; can only be one of the motion categories below.</p>
+			<p>6. What is the &lt;Action Subcategory&gt; of human motion?
+			If RequireMotion is yes, then assign a &lt;Action Subcategory&gt; to the motion.&lt;Action Subcategory&gt; can only be one of the "subcategories" 
+			under the corresponding &lt;ction Category&gt; in the motion categories below</p>
+			<p>7. What are the detailed movements of the entire body as well as specific body parts such as the head, arms, and legs? Overall Body Movements: Describe the range of motions and dynamics involving the entire body, including posture shifts, weight distribution changes, and transitions between various states of movement. Head Movements: Specify actions such as no movement, tilting, nodding, shaking, turning, and any other nuanced head gestures that contribute to the character’s expression or intention. Arm Movements: Outline movements involving the arms, including no movement, lifting, swinging, extending, bending, and any complex gestures that add to the character's physical language. Leg Movements: Describe actions performed by the legs, such as no movement walking, running, kicking, bending, and any other leg movements that are significant to the character's physical expression or interaction with the environment
+			<p>8. Character Position: The typical position or movement of the character during the motion (e.g., standing, sitting, walking)</p>
+			<p>9. Intensity: The level of intensity or energy in the motion (e.g., high, medium, low)</p>
+			<p>10. Camera Angle: Suggested camera angles or perspectives that best capture the motion (e.g., close-up, wide shot)</p>
+			<p>11. Duration: The length of the motion clip, typically measured in seconds</p>
+				
+			<h4>
+				Put motion into motion bank:
+			</h4>
+			<p align=center>
+				<img src="../images/put_motion.png" alt="Your Image">
+			</p>
+			<br><br>
+
+			<h3>
+				Motion Caption
+			</h3>
+			<p>
+				Initially, I align all 3D motions to the SMPL-X skeleton, then proceed to render a video from these aligned motions. This rendered video is subsequently fed into a large-scale model 
+			for automatic caption generation. In cases where poses do not include hand details, I utilize default hand parameters to ensure consistency.
+			</p>
+			<p>
+				I evaluated several models, including CogVLM2-Video-8B, InterVL2.0, ShareGPT4Video, and InternVL2.0 Pro. Among these, InternVL2.0 Pro delivered the most accurate and effective results.
+			</p>
+
+			<h4>
+				Response:
+			</h4>
+			<p align=center>
+				<img src="../images/internvl2.png" alt="Your Image">
+			</p>
+			<pre>
+				{
+					"Motivation": "Explaining or demonstrating something.",
+					"Context": {
+					  "Location": "Indoors/Neutral Space",
+					  "Time": "Daytime",
+					  "Scenario": "Casual explanation or demonstration."
+					},
+					"Emotion": "Neutral/Casual",
+					"RequireMotion": "Yes",
+					"Action Category": "Gestures",
+					"Action Subcategory": "Beat",
+					"Detailed Movements": {
+					  "Head": "No significant movement.",
+					  "Arms": "The character moves her hands outwards and slightly up, creating open and expansive gestures.",
+					  "Legs": "Standing still with minimal leg movement."
+					},
+					"Position": "Standing",
+					"Intensity": "Low",
+					"Camera": "Medium shot to capture upper body and hand gestures.",
+					"Duration": "Approximately 5 seconds."
+				  }
+				  
+			</pre>
+			<br><br>
+
+			<h3>Motion Retrieval:</h3>
+			<p>Existing motion retrieval methods include:</p>
+			<ul>
+				<li>
+					<strong>ReMoDiffuse:</strong> Retrieval-Augmented Motion Diffusion Model: Calculates similarity in motion descriptions and motion duration.
+				</li>
+				<p align=center>
+					<img src="../images/re1.png" alt="Your Image">
+				</p>
+				<li>
+					<strong>SIGGesture:</strong> Generalized Co-Speech Gesture Synthesis via Semantic Injection with Large-Scale Pre-Training Diffusion Models: Uses large language models (LLMs) to locate keyword positions based on text descriptions and predefined motion library tags.
+				</li>
+				<p align=center>
+					<img src="../images/re2.png" alt="Your Image">
+				</p>
+				<li>
+					<strong>GesGPT:</strong> Speech Gesture Synthesis With Text Parsing from ChatGPT: Given speech transcription and prompt, identifies each sentence's action intent, emphasized word, and semantic word. Retrieves motion by first searching for corresponding motion in the library based on semantic word, and if not found, then based on action intent. Emphasized words are used to determine the insertion position.
+				</li>
+				<p align=center>
+					<img src="../images/re3.png" alt="Your Image">
+				</p>
+				<li>
+					<strong>PoseScript:</strong> Linking 3D Human Poses and Natural Language: Computes similarity by embedding motion text descriptions and motion joint embeddings.
+				</li>
+				<p align=center>
+					<img src="../images/re4.png" alt="Your Image">
+				</p>
+			</ul>
+			<br><br>
+
+			<h3>Our method:</h3>
+			<p align=center>
+				<img src="../images/plan.png" alt="Your Image">
+			</p>
+
+			<br><br><br><br><br><br>
+		</div>
+	</body>
+</html>
