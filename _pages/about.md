@@ -11,6 +11,7 @@ redirect_from:
 Hi, this is Yanling. I'm passionate about cutting-edge research in **3D Reconstruction and Generation**, as well as **Extended Reality (XR)**. My expertise spans a broad range of topics, including generative models (GANs, diffusion models), 3D vision techniques (NeRF, 3D Gaussian Splatting, parametric human modeling, SLAM, and MVS), as well as XR application development. I’m open to diverse opportunities in these fields.
 
 
+{% comment %} News section hidden; remove this comment wrapper to show it again.
 ## News!
 
 **[2025/06/15]** Graduated from Lund University.  
@@ -18,60 +19,60 @@ Hi, this is Yanling. I'm passionate about cutting-edge research in **3D Recons
 **[2024/06/20]** Began an **internship** at [Kunlun Wanwei](https://www.kunlun.com/en/), focusing on **3D human motion generation**.  
 **[2023/08/15]** Moved to **Lund, Sweden** to begin my **Master’s studies** at [Lund University](https://www.lunduniversity.lu.se/).  
 **[2023/04/01]** Admitted to the **VR/AR program** at [Lund University](https://www.lunduniversity.lu.se/).
+{% endcomment %}
 
+## Research Experience
 
+<!-- Generated from _publications/, newest first. Card images come from each file's `thumbnail` field. -->
+{% assign publications = site.publications | sort: "date" | reverse %}
+{% for pub in publications %}
+<div class="project-card">
+  {%- if pub.thumbnail %}
+  <div class="project-card__media">
+    <a href="{{ pub.url }}"><img src="{{ pub.thumbnail }}" alt="" loading="lazy"></a>
+  </div>
+  {%- endif %}
+  <div class="project-card__body">
+    <h3 class="project-card__title"><a href="{{ pub.url }}">{{ pub.title }}</a></h3>
+    <p class="project-card__authors">{{ pub.authors }}</p>
+    <p class="project-card__venue">{% if pub.category == "masterthesis" %}Master's thesis, {% endif %}<i>{{ pub.venue }}</i>, {{ pub.date | date: "%Y" }}</p>
+    <a href="{{ pub.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf"></i>PDF</a>
+    {%- if pub.codeurl %} / <a href="{{ pub.codeurl }}" target="_blank"><i class="fab fa-fw fa-github"></i>Code</a>{% endif %}
+  </div>
+</div>
+{% endfor %}
 
 ## Professional Experience
 
-<div>
-<table style="width:100%;border:none;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;font-size: large">
-<tr>
-<td style="padding:20px;width:30%;vertical-align:middle;border:none" align="center">
-<img width="350" src="../images/co_speech_pose.png"/>
-</td>
-<td style="padding:20px;width:70%;vertical-align:middle;border: none" align="left">
-<b>Talking pose generation</b><br>
-This project is about talking-pose generation and I do this project independently. I tried two ways, motion retrival and end2end motion generation. <br>
-<a href="../huahua/End2end motion generation.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a> /
-</td>
-</tr>
-</table>
+<div class="project-card project-card--compact">
+  <div class="project-card__media">
+    <img src="/images/thumbs/co_speech_pose.jpg" alt="Generated talking poses" loading="lazy">
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title">Talking Pose Generation</h3>
+    <p>Generating body and hand gestures driven by speech, carried out independently. I explored two approaches: motion retrieval and end-to-end motion generation.</p>
+    <a href="/huahua/End2end%20motion%20generation.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a>
+  </div>
 </div>
-
----
-<div>
-<table style="width:100%;border:none;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;font-size: large">
-<tr>
-<td style="padding:20px;width:30%;vertical-align:middle;border:none" align="center">
-<img width="350" src="../images/nerf.png"/>
-</td>
-<td style="padding:20px;width:70%;vertical-align:middle;border: none" align="left">
-<b>Semantic Nerf in unbounded scene for autonomous driving</b><br>
-This project is for the semantic auto-labeling task in the autonomous driving scene and I do this project independently. I use nerf, which has show significant performance in novel view synthesis, to achieve muti-view generation and get the semantic label. <br>
-<a href="../huahua/Semantic Nerf in unbounded scene for autonomous driving scene.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a> /
-</td>
-</tr>
-</table>
+<div class="project-card project-card--compact">
+  <div class="project-card__media">
+    <img src="/images/thumbs/nerf.jpg" alt="Semantic NeRF renderings of a street scene" loading="lazy">
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title">Semantic NeRF in Unbounded Scenes for Autonomous Driving</h3>
+    <p>Semantic auto-labeling for autonomous-driving scenes, carried out independently. I used NeRF, which performs strongly at novel view synthesis, to render multi-view images and obtain semantic labels.</p>
+    <a href="/huahua/Semantic%20Nerf%20in%20unbounded%20scene%20for%20autonomous%20driving%20scene.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a>
+  </div>
 </div>
-
----
-<div>
-<table style="width:100%;border:none;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;font-size: large">
-<tr>
-<td style="padding:20px;width:30%;vertical-align:middle;border:none" align="center">
-<img width="350" src="../images/bunny-rgb.gif"/>
-<!-- <video width="350" height="200" loop>
-    <source src="../images/bunny-rgb.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video> -->
-</td>
-<td style="padding:20px;width:70%;vertical-align:middle;border: none" align="left">
-<b>3D genration for Game Asset</b><br>
-This project is about research of constructing 3D models of game assets. <br>
-<a href="../huahua/3D generation.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a> /
-</td>
-</tr>
-</table>
+<div class="project-card project-card--compact">
+  <div class="project-card__media">
+    <video src="/images/bunny-rgb.mp4" poster="/images/thumbs/bunny-rgb.jpg" autoplay loop muted playsinline aria-label="Rotating generated 3D bunny asset"></video>
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title">3D Generation for Game Assets</h3>
+    <p>Research on constructing 3D models of game assets.</p>
+    <a href="/huahua/3D%20generation.html" target="_blank"><i class="fas fa-fw fa-globe"></i>Project Page</a>
+  </div>
 </div>
 
 
@@ -87,9 +88,7 @@ I am committed to learning endlessly, living authentically, and loving deeply. I
 
 
 ## Contact
-E-mail: ya4736hu-s[AT]student.lu.se
+E-mail: yanlinghua[AT]cs.au.dk
 
 <!-- <a href="https://info.flagcounter.com/dTp3"><img src="https://s11.flagcounter.com/map/dTp3/size_s/txt_000000/border_CCCCCC/pageviews_0/viewers_0/flags_0/" alt="Flag Counter" border="0"></a> -->
-
-<a href="https://clustrmaps.com/site/1bzqp"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=icmng1ZUl8VaX6z00i2v7c7rs51TwZN3aaImTQqftgY&cl=ffffff" /></a>
 

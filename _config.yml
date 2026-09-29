@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Yanling's Homepage"
 title_separator          : "-"
 name                     : &name "Yanling"
-description              : &description "Yanling 's Homepage"
+description              : &description "Yanling Hua: research in 3D reconstruction and generation, and extended reality (XR)."
 url                      : https://ylingerhua.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ylingerhua.github.io"
@@ -21,14 +21,14 @@ repository               : "ylingerhua.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  name             : "Yanling (化 彦 伶)"
-  avatar           : "me.png"
+  name             : "Yanling (化彦伶)"
+  avatar           : "linger.jpg"
   pronouns         : # example: "she/her"  
-  bio              : "Master's student at Lund University"
-  location         : "Lund, Sweden"
+  bio              : "PhD student at Aarhus University"
+  location         : "Aarhus, Denmark"
   employer         : 
   uri              : # URL
-  email            : "ya4736hu-s@student.lu.se" 
+  email            : "yanlinghua@cs.au.dk"
 
   # Academic websites
   academia         : # URL
@@ -137,7 +137,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "linger.jpg" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -148,7 +148,7 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               : false # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
     tracking_id          :
 

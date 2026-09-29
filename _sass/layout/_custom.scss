@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Site-specific styles
+   ========================================================================== */
+
+/* Keep the round sidebar avatar circular even when the photo isn't square */
+
+.author__avatar img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Project cards (home page): image beside text on wide screens, stacked on phones */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1.5em 0;
+
+  @include breakpoint($small) {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5em;
+  }
+}
+
+.project-card + .project-card {
+  border-top: 1px solid var(--global-border-color);
+}
+
+.project-card__media {
+  flex: 0 0 auto;
+
+  @include breakpoint($small) {
+    width: 38%;
+  }
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+  }
+}
+
+/* Smaller images (used by the Professional Experience cards) */
+.project-card--compact .project-card__media {
+  max-width: 220px;
+
+  @include breakpoint($small) {
+    width: 24%;
+  }
+}
+
+.project-card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  p {
+    margin: 0.35em 0 0.6em;
+  }
+
+  .project-card__authors,
+  .project-card__venue {
+    font-size: 0.9em;
+  }
+
+  .project-card__authors {
+    margin-bottom: 0;
+  }
+
+  .project-card__venue {
+    margin-top: 0.1em;
+    color: var(--global-text-color-light);
+  }
+}
+
+.project-card__title {
+  margin: 0;
+  font-size: $type-size-4;
+}

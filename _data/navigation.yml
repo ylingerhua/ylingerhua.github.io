@@ -9,19 +9,19 @@
 
 main:
   - title: "About Me"
-    url: "https://ylingerhua.github.io"
+    url: /
 
-  - title: "Research Experience"
-    url: /publications/
+  # - title: "Research Experience"
+  #   url: /#research-experience
 
-  - title: "Professional Experience"
-    url: "https://ylingerhua.github.io/#professional-experience"
+  # - title: "Professional Experience"
+  #   url: /#professional-experience
 
   - title: "Portfolio"
     url: /portfolio/
   
-  - title: "Paper Review Archive"
-    url: /year-archive/
-    
+  # - title: "Paper Review Archive"
+  #   url: /year-archive/
+
   # - title: "CV"
   #   url: /cv-json/
