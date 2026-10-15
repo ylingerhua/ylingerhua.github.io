@@ -16,4 +16,8 @@ citation: '<strong>Y. Hua</strong>, S. Zollmann, T. Langlotz. "AR Bouldering Rep
 
 We present a 4D human-scene reconstruction method for precise human-scene alignment in bouldering scenarios. 4D bouldering replay can convey complex climbing movements from different perspectives and support asynchronous collaborative training. However, it is nontrivial to accurately reconstruct and align human motion with climbing-wall geometry from monocular video. To address this problem, we introduce a contact-aware fine-tuning method that builds upon state-of-the-art human-scene reconstruction methods. By incorporating human-scene contact and penetration constraints, our method improves alignment between reconstructed climbers and climbing walls. We further develop an AR bouldering system for climbing-wall visualization and motion replay in arbitrary indoor environments.
 
+<div style="position: relative; width: 100%; max-width: 900px; aspect-ratio: 16 / 9;">
+	<iframe src="https://www.youtube.com/embed/RBVmvJKa7jU?si=oLwAhZ1oa-r3LJIZ" title="AR Bouldering Replay project video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%;"></iframe>
+</div>
+
 [<i class="fas fa-fw fa-file-pdf"></i> Paper](/files/ismar_bouldering.pdf){:target="_blank"}
