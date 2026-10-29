@@ -14,6 +14,7 @@ Hi, this is Yanling. I'm passionate about cutting-edge research in **3D Recons
 {% comment %} News section hidden; remove this comment wrapper to show it again.
 ## News!
 
+**[2025/12/01]** Joined Aarhus University as a PhD student.
 **[2025/06/15]** Graduated from Lund University.  
 **[2025/01/20]** Started as a **Master’s thesis worker** at [Sony Nordic](https://www.linkedin.com/company/sony-europe/posts/?feedView=all).  
 **[2024/06/20]** Began an **internship** at [Kunlun Wanwei](https://www.kunlun.com/en/), focusing on **3D human motion generation**.  
@@ -78,13 +79,13 @@ Hi, this is Yanling. I'm passionate about cutting-edge research in **3D Recons
 
 <!-- ## Personal
 I spend my spare time in reading, watching movies and traveling. Recently I am reading some books related to -->
-## Personal
+<!--## Personal
 I am committed to learning endlessly, living authentically, and loving deeply. I believe the meaning of life is to experience. This is my favourite quote:
 
 > *"Sing like no one is listening.  
 > Love like you’ve never been hurt.  
 > Dance like nobody’s watching,  
-> And live like it’s heaven on earth."* 
+> And live like it’s heaven on earth."* -->
 
 
 ## Contact
